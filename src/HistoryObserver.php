@@ -3,11 +3,13 @@
 namespace Tochka\ModelHistory;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 /**
  * This listens for model events and produces a history record for each action on the model in question.
+ * @codeCoverageIgnore
  */
 class HistoryObserver
 {
@@ -55,8 +57,11 @@ class HistoryObserver
         }
     }
 
+    protected static ?string $tableName = null;
+
     public static function getTableName(): string
     {
-        return config('model-history.table_name', 'history');
+        return self::$tableName ??
+            self::$tableName = App::make('config')->get('model-history.table_name', 'history');
     }
 }
