@@ -1,0 +1,23 @@
+{
+    "name": "tochka-developers/model-history",
+    "description": "Simple history for Laravel models",
+    "type": "package",
+    "require": {
+        "php": "^7.4",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "laravel/framework": "^5.8 || ^6.0 || ^7.0 || ^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tochka\\ModelHistory\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tochka\\ModelHistory\\ModelHistoryServiceProvider"
+            ]
+        }
+    }
+}
