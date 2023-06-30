@@ -52,9 +52,7 @@ class HistoryObserver
         $entity_name = $model->getTable();
         $entity_id = $model->{$model->getKeyName()};
         try {
-            $query = DB::table(self::getTableName());
-
-            $query->insert([
+            DB::table(self::getTableName())->insert([
                 'entity_name' => $entity_name,
                 'entity_id'   => $entity_id,
                 'action'      => $action,
